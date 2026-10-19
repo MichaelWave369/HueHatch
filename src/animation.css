@@ -89,3 +89,63 @@
  .world.alive .reaction-bubble, .world.alive .reaction-star, .world.alive .reaction-disco,
  .world.alive .reaction-starfish { animation:none !important; }
 }
+
+
+/* v0.6 original world motion. Motion is shared with gallery and SVG export. */
+.world.alive .flap{animation:hhFlap 1.5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom center}
+.world.alive .fire{animation:hhFire .95s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom center}
+.world.alive .sparkle{animation:hhSparkle 1.8s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+.world.alive .firefly{animation:hhFirefly 2.4s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+.world.alive .orbit{animation:hhOrbit 10s linear infinite;transform-box:fill-box;transform-origin:center}
+.world.alive .drift{animation:hhDrift 3s ease-in-out infinite alternate}
+@keyframes hhFlap{to{transform:rotate(11deg) scaleX(.83)}}
+@keyframes hhFire{to{transform:scale(.88,1.18) rotate(-5deg)}}
+@keyframes hhSparkle{to{transform:scale(1.17);opacity:.65}}
+@keyframes hhFirefly{to{transform:translate(9px,-17px);opacity:.6}}
+@keyframes hhOrbit{to{transform:rotate(360deg)}}
+@keyframes hhDrift{to{transform:translate(8px,-15px)}}
+
+.world.alive .reaction-dragon-fire{animation:hhRainbowFire .67s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center bottom;filter:drop-shadow(0 0 12px var(--paint-tone,#ff6f91))}
+.world.alive .reaction-dragon-wing{animation:hhFlap .8s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center bottom;filter:drop-shadow(0 0 5px var(--paint-tone,#a999ff))}
+.world.alive .reaction-firefly{animation:hhFirefly 1.25s ease-in-out infinite alternate;filter:drop-shadow(0 0 10px var(--paint-tone,#ffd861))}
+.world.alive .reaction-thruster{animation:hhRocket .75s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:top center;filter:drop-shadow(0 0 14px var(--paint-tone,#ffab70))}
+.world.alive .reaction-mushroom,.world.alive .reaction-crystal,.world.alive .reaction-dragon-spark,
+.world.alive .reaction-dragon-eye,.world.alive .reaction-planet,.world.alive .reaction-space-star,
+.world.alive .reaction-satellite,.world.alive .reaction-rocket-window{
+  filter:drop-shadow(0 0 9px var(--paint-tone,#ffd861)) brightness(1.09);
+}
+@keyframes hhRainbowFire{to{transform:scale(.76,1.28) rotate(6deg)}}
+@keyframes hhRocket{to{transform:scale(.9,1.25)}}
+
+.world.alive[data-speed="0.5"] .flap{animation-duration:3s}
+.world.alive[data-speed="0.5"] .fire{animation-duration:1.9s}
+.world.alive[data-speed="0.5"] .sparkle{animation-duration:3.6s}
+.world.alive[data-speed="0.5"] .firefly{animation-duration:4.8s}
+.world.alive[data-speed="0.5"] .orbit{animation-duration:20s}
+.world.alive[data-speed="0.5"] .drift{animation-duration:6s}
+.world.alive[data-speed="0.5"] .reaction-dragon-fire{animation-duration:1.34s}
+.world.alive[data-speed="0.5"] .reaction-dragon-wing{animation-duration:1.6s}
+.world.alive[data-speed="0.5"] .reaction-firefly{animation-duration:2.5s}
+.world.alive[data-speed="0.5"] .reaction-thruster{animation-duration:1.5s}
+.world.alive[data-speed="1.5"] .flap{animation-duration:1s}
+.world.alive[data-speed="1.5"] .fire{animation-duration:0.633s}
+.world.alive[data-speed="1.5"] .sparkle{animation-duration:1.2s}
+.world.alive[data-speed="1.5"] .firefly{animation-duration:1.6s}
+.world.alive[data-speed="1.5"] .orbit{animation-duration:6.667s}
+.world.alive[data-speed="1.5"] .drift{animation-duration:2s}
+.world.alive[data-speed="1.5"] .reaction-dragon-fire{animation-duration:0.447s}
+.world.alive[data-speed="1.5"] .reaction-dragon-wing{animation-duration:0.533s}
+.world.alive[data-speed="1.5"] .reaction-firefly{animation-duration:0.833s}
+.world.alive[data-speed="1.5"] .reaction-thruster{animation-duration:0.5s}
+.world.alive[data-speed="2"] .flap{animation-duration:0.75s}
+.world.alive[data-speed="2"] .fire{animation-duration:0.475s}
+.world.alive[data-speed="2"] .sparkle{animation-duration:0.9s}
+.world.alive[data-speed="2"] .firefly{animation-duration:1.2s}
+.world.alive[data-speed="2"] .orbit{animation-duration:5s}
+.world.alive[data-speed="2"] .drift{animation-duration:1.5s}
+.world.alive[data-speed="2"] .reaction-dragon-fire{animation-duration:0.335s}
+.world.alive[data-speed="2"] .reaction-dragon-wing{animation-duration:0.4s}
+.world.alive[data-speed="2"] .reaction-firefly{animation-duration:0.625s}
+.world.alive[data-speed="2"] .reaction-thruster{animation-duration:0.375s}
+
+@media(prefers-reduced-motion:reduce){.world.alive .flap,.world.alive .fire,.world.alive .sparkle,.world.alive .firefly,.world.alive .orbit,.world.alive .drift,.world.alive .reaction-dragon-fire,.world.alive .reaction-dragon-wing,.world.alive .reaction-firefly,.world.alive .reaction-thruster{animation:none!important}}
