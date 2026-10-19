@@ -25,7 +25,7 @@ test('animated export preserves the chosen palette, paths and motion classes', (
   assert.match(output,/fill="#ff6f91"/);
   assert.match(output,/class="area dance"/);
   assert.match(output,/stroke="#7bb9ff" stroke-width="9"/);
-  assert.match(output,/M15 20L25 35/);
+  assert.match(output,/M15 20 L25 35/);
   assert.match(output,/<style>.*@keyframes dance/s);
   assert.doesNotMatch(output,/<script\b/);
   assert.doesNotMatch(output,/<image\b/);
