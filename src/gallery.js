@@ -1,7 +1,7 @@
 // Browser-local, copy-only keepsakes. The editor's autosaved pages remain separate.
 export const GALLERY_KEY = 'huehatch-gallery-v1';
 export const MAX_SNAPSHOTS = 16;
-const SCENE_IDS = new Set(['meadow', 'ocean', 'robot', 'village']);
+const SCENE_IDS = new Set(['meadow', 'ocean', 'robot', 'village', 'dragon', 'forest', 'space']);
 
 export function clonePainting(painting) {
   const fills = painting?.fills && typeof painting.fills === 'object' && !Array.isArray(painting.fills)
