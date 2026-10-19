@@ -8,7 +8,7 @@ const ellipse = (id,cx,cy,rx,ry,motion='') => part('ellipse',id,{cx,cy,rx,ry},mo
 
 function dragonSkies() {
   const a=[
-    rect('dragon-sky',0,0,900,620),
+    rect('sky',0,0,900,620),
     circle('dragon-sun',743,115,70,'sun'),
     path('dragon-cloud-a','M40 173Q5 156 42 131Q59 93 109 109Q147 63 188 114Q248 100 255 155Q267 185 222 188H63Z','cloud'),
     path('dragon-cloud-b','M650 282Q603 262 634 226Q660 196 705 224Q747 181 790 227Q844 228 852 270Q854 300 803 304H679Z','cloud'),
@@ -38,7 +38,7 @@ function dragonSkies() {
 
 function enchantedForest() {
   const a=[
-    rect('forest-sky',0,0,900,620),
+    rect('sky',0,0,900,620),
     circle('forest-moon',733,112,66,'bob'),
     path('forest-hill-back','M0 432Q239 302 440 421Q680 307 900 418V620H0Z'),
     path('forest-hill-front','M0 524Q242 435 480 517T900 493V620H0Z'),
@@ -67,9 +67,9 @@ function enchantedForest() {
 
 function cosmicPlayground() {
   const a=[
-    rect('space-sky',0,0,900,620),
-    circle('space-planet',717,165,103,'orbit'),
+    rect('sky',0,0,900,620),
     ellipse('space-planet-ring',718,168,162,37,'orbit'),
+    circle('space-planet',717,165,103,'orbit'),
     circle('space-moon',167,152,62,'bob'),
     path('space-asteroid-a','M80 418L120 380L168 396L181 445L136 473L99 457Z','drift'),
     path('space-asteroid-b','M766 462L796 433L832 445L843 476L818 508L785 497Z','drift'),
