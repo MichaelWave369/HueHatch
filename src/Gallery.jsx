@@ -1,4 +1,5 @@
 import React from 'react';
+import { reactionClass } from './reactivity.js';
 
 function pathData(points) {
   return points.map((p, i) => (i ? 'L' : 'M') + p[0] + ' ' + p[1]).join(' ');
@@ -9,7 +10,7 @@ function MiniArtwork({ scene, painting, motionSpeed, playing }) {
     <svg viewBox="0 0 900 620" role="img" aria-label={scene.name + (playing ? ' moving coloring preview' : ' paused coloring preview')}
       className={'gallery-thumbnail world alive' + (playing ? '' : ' paused')} data-speed={motionSpeed} xmlns="http://www.w3.org/2000/svg">
       {scene.parts.map(part => React.createElement(part.tag, {
-        key: part.id, ...part.attrs, fill: painting.fills[part.id] || '#ffffff', className: 'area ' + part.motion,
+        key: part.id, ...part.attrs, fill: painting.fills[part.id] || '#ffffff', className: 'area ' + part.motion + ' ' + reactionClass(scene.id, part.id, painting.fills), style: {'--paint-tone': painting.fills[part.id] || '#ffffff'},
         stroke: ['sky', 'water', 'backdrop'].includes(part.id) ? 'none' : '#30263e',
         strokeWidth: 5, strokeLinejoin: 'round', strokeLinecap: 'round'
       }))}
