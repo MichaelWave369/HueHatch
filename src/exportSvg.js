@@ -1,4 +1,5 @@
 import { clonePainting } from './gallery.js';
+import { reactionClass } from './reactivity.js';
 
 // Explicitly serialize only SVG primitives we create. No user-authored markup is accepted.
 const TAGS = new Set(['rect', 'circle', 'ellipse', 'path']);
@@ -11,7 +12,7 @@ export function escapeXml(value) {
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[char]);
 }
 
-function serializeShape(part, fills) {
+function serializeShape(part, fills, sceneId) {
   if (!part || !TAGS.has(part.tag) || typeof part.id !== 'string') return '';
   const attrs = Object.entries(part.attrs || {})
     .filter(([key, value]) => ATTRS.has(key) && (typeof value === 'string' || typeof value === 'number'))
@@ -19,7 +20,8 @@ function serializeShape(part, fills) {
   const motion = typeof part.motion === 'string' && /^[a-z-]*$/.test(part.motion)
     ? part.motion : '';
   const fill = fills[part.id] || '#ffffff';
-  return `<${part.tag} ${attrs} fill="${escapeXml(fill)}" stroke="${BACKGROUNDS.has(part.id) ? 'none' : '#30263e'}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" class="area ${motion}"/>`;
+  const reaction = reactionClass(sceneId, part.id, fills);
+  return `<${part.tag} ${attrs} fill="${escapeXml(fill)}" stroke="${BACKGROUNDS.has(part.id) ? 'none' : '#30263e'}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" class="area ${motion}${reaction ? ' ' + reaction : ''}" style="--paint-tone:${escapeXml(fill)}"/>`;
 }
 
 function serializeStroke(stroke) {
@@ -43,7 +45,7 @@ export function renderAnimatedSvg(scene, painting, options = {}) {
   }
   const safeSpeed = SPEEDS.has(Number(speed)) ? Number(speed) : 1;
   const art = clonePainting(painting);
-  const shapes = scene.parts.map(p => serializeShape(p, art.fills)).join('\n');
+  const shapes = scene.parts.map(p => serializeShape(p, art.fills, scene.id)).join('\n');
   const strokes = art.strokes.map(serializeStroke).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 900 620"
