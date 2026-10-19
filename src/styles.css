@@ -32,3 +32,10 @@
 .export-animated { background:#e8dcf8; color:#6e3e9a; }
 .export-tip { margin:9px 2px 0; color:#968b9e; font-size:10px; line-height:1.5; text-align:center; }
 @media(max-width:760px) { .gallery-header-actions { width:100%; } }
+
+
+/* v0.4: compact, accessible feedback. The coloring surface remains the focus. */
+.reaction-status{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 4px;padding:12px 14px;border-radius:13px;background:#fbf4ff;border:1px solid #efe0fa;line-height:1.5}
+.reaction-status strong{font:600 13px Fredoka,sans-serif;color:#76539a}
+.reaction-status span{font-size:11px;color:#82718e}
+@media(max-width:760px){.reaction-status{align-items:flex-start;flex-direction:column;gap:4px}}
