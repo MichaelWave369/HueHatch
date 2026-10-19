@@ -7,7 +7,10 @@ export const WORLD_HINTS = Object.freeze({
   meadow: 'Try the flower petals, butterfly wings or sunshine.',
   ocean: 'Try the fish, glowing jellyfish or rising bubbles.',
   robot: 'Try the heart, a speaker cone or the disco light.',
-  village: 'Try a star, moon or cottage window.'
+  village: 'Try a star, moon or cottage window.',
+  dragon: 'Color the dragon wings or breathe rainbow fire.',
+  forest: 'Wake fireflies, mushrooms, crystals and moonlight.',
+  space: 'Light a rocket thruster, planet or satellite.'
 });
 
 export function reactionClass(sceneId, partId, fills = {}) {
@@ -41,6 +44,25 @@ export function reactionClass(sceneId, partId, fills = {}) {
       if (partId.startsWith('window-')) return 'reaction-window';
       if (partId === 'tree') return 'reaction-tree';
       return '';
+    case 'dragon':
+      if (partId === 'dragon-flame') return 'reaction-dragon-fire';
+      if (partId.startsWith('dragon-wing-')) return 'reaction-dragon-wing';
+      if (partId.startsWith('dragon-spark-')) return 'reaction-dragon-spark';
+      if (partId === 'dragon-eye') return 'reaction-dragon-eye';
+      return '';
+    case 'forest':
+      if (partId.startsWith('forest-firefly-') || partId.startsWith('forest-glow-')) return 'reaction-firefly';
+      if (partId.startsWith('forest-mushroom-cap-')) return 'reaction-mushroom';
+      if (partId.startsWith('forest-crystal-')) return 'reaction-crystal';
+      if (partId === 'forest-moon') return 'reaction-moon';
+      return '';
+    case 'space':
+      if (partId === 'space-rocket-flame') return 'reaction-thruster';
+      if (partId === 'space-planet' || partId === 'space-planet-ring') return 'reaction-planet';
+      if (partId.startsWith('space-star-')) return 'reaction-space-star';
+      if (partId === 'space-satellite-core' || partId === 'space-satellite-eye') return 'reaction-satellite';
+      if (partId === 'space-rocket-window') return 'reaction-rocket-window';
+      return '';
     default:
       return '';
   }
@@ -70,7 +92,19 @@ const RESPONSES = Object.freeze({
   'reaction-star': 'A little star just lit up!',
   'reaction-moon': 'Moonlight is glowing.',
   'reaction-window': 'Someone turned on the cottage lights.',
-  'reaction-tree': 'The tree shimmers in the moonlight.'
+  'reaction-tree': 'The tree shimmers in the moonlight.',
+  'reaction-dragon-fire': 'Rainbow fire! Your dragon is breathing color.',
+  'reaction-dragon-wing': 'Dragon wings are flapping in your colors.',
+  'reaction-dragon-spark': 'Your dragon left a sparkling trail.',
+  'reaction-dragon-eye': 'Your dragon has a twinkle in its eye.',
+  'reaction-firefly': 'A forest firefly is glowing!',
+  'reaction-mushroom': 'An enchanted mushroom wakes up!',
+  'reaction-crystal': 'A magic crystal is shimmering.',
+  'reaction-thruster': 'Rocket ignition! Colorful engines are glowing.',
+  'reaction-planet': 'Your planet is shining in orbit.',
+  'reaction-space-star': 'A star just lit up in the galaxy.',
+  'reaction-satellite': 'Your satellite is sending a signal.',
+  'reaction-rocket-window': 'The rocket window is lit for launch.'
 });
 
 export function reactionMessage(sceneId, partId, fills) {
