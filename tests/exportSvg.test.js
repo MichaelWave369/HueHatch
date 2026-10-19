@@ -62,3 +62,20 @@ test('shared animation.css includes live motion, speed presets and reduced-motio
   assert.match(css,/animation-play-state: paused/);
   assert.doesNotMatch(css,/@import|url\(/);
 });
+
+
+test('standalone SVG carries its color-triggered heartbeat without new stored metadata', () => {
+  const css=readFileSync(new URL('../src/animation.css',import.meta.url),'utf8');
+  const heart = {id:'robot',name:'Disco Bot',parts:[
+    {tag:'path',id:'heart',attrs:{d:'M0 0L15 15Z'},motion:'dance'},
+    {tag:'rect',id:'head',attrs:{x:0,y:0,width:10,height:10},motion:'dance'}
+  ]};
+  const output=renderAnimatedSvg(heart,{fills:{heart:'#ff6f91',head:'#333553'},strokes:[]},
+    {motionCss:css,speed:2});
+  assert.match(output,/class="area dance reaction-heart"/);
+  assert.match(output,/style="--paint-tone:#ff6f91"/);
+  assert.match(output,/@keyframes reactiveHeartbeat/);
+  assert.match(output,/data-speed="2"/);
+  assert.match(output,/fill="#333553"/);
+  assert.doesNotMatch(output,/class="area dance reaction-heart"[^>]*<script/);
+});
