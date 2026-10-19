@@ -3,7 +3,7 @@ import { reactionClass } from './reactivity.js';
 // Only short, deterministic synthesizer notes. No microphones, MIDI, uploads,
 // external audio clips, network requests or always-on background playback.
 const HEX = /^#[0-9a-f]{6}$/i;
-const WORLDS = new Set(['meadow', 'ocean', 'robot', 'village']);
+const WORLDS = new Set(['meadow', 'ocean', 'robot', 'village', 'dragon', 'forest', 'space']);
 const PENTATONIC = [0, 2, 4, 7, 9, 12];
 
 export const SOUND_VOLUME_KEY = 'huehatch-sound-volume-v1';
@@ -50,6 +50,26 @@ export function cueForFill(sceneId, partId, before = {}, after = {}) {
 
   let notes;
   switch (kind) {
+    case 'reaction-dragon-fire':
+      notes = [note(180 * pitch, .26, 0, 'triangle', .58, .12),
+        note(128 * pitch, .3, .16, 'triangle', 1.32, .085)];
+      break;
+    case 'reaction-dragon-wing':
+      notes = [note(240 * pitch, .22, 0, 'sine', .72)];
+      break;
+    case 'reaction-firefly':
+    case 'reaction-crystal':
+    case 'reaction-mushroom':
+      notes = [note(510 * pitch, .24), note(640 * pitch, .28, .1, 'sine', 1, .06)];
+      break;
+    case 'reaction-thruster':
+      notes = [note(130 * pitch, .36, 0, 'triangle', 1.7, .12)];
+      break;
+    case 'reaction-planet':
+    case 'reaction-space-star':
+    case 'reaction-satellite':
+      notes = [note(420 * pitch, .24), note(560 * pitch, .25, .1, 'sine', 1.09, .065)];
+      break;
     case 'reaction-heart':
       notes = [note(156 * pitch, .13), note(126 * pitch, .16, .16)];
       break;
@@ -82,7 +102,7 @@ export function cueForFill(sceneId, partId, before = {}, after = {}) {
       notes = [note(392 * pitch, .17, 0, 'sine', 1.13)];
       break;
     default: {
-      const base = { meadow: 392, ocean: 329, robot: 220, village: 440 }[sceneId];
+      const base = { meadow: 392, ocean: 329, robot: 220, village: 440, dragon: 196, forest: 494, space: 370 }[sceneId];
       notes = [note(base * pitch, .14, 0, 'sine', 1.06, .075)];
     }
   }
@@ -90,7 +110,7 @@ export function cueForFill(sceneId, partId, before = {}, after = {}) {
 }
 
 export function previewCue(sceneId) {
-  const ids = { robot: 'heart', meadow: 'sun', ocean: 'bubble-0', village: 'star-0' };
+  const ids = { robot: 'heart', meadow: 'sun', ocean: 'bubble-0', village: 'star-0', dragon: 'dragon-flame', forest: 'forest-firefly-0', space: 'space-rocket-flame' };
   const id = ids[sceneId] || ids.meadow;
   return cueForFill(WORLDS.has(sceneId) ? sceneId : 'meadow', id, {}, { [id]: '#ff6f91' });
 }

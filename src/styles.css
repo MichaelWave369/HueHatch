@@ -54,3 +54,8 @@
 .soundbox-preview{background:#fff;border:1px solid #ddd0eb;color:#805aa4;border-radius:11px;padding:10px 12px;font-size:11px;font-weight:800;width:100%}
 .soundbox-status{color:#796b86;font-size:11px;line-height:1.5;margin:10px 0}
 .soundbox-disclaimer{color:#9689a0;display:block;font-size:10px;line-height:1.5}
+
+/* v0.6: distinct tiles for the three newly added living worlds. */
+.scene-link:nth-child(5) .emoji{background:#f9e2eb}
+.scene-link:nth-child(6) .emoji{background:#e3f3e5}
+.scene-link:nth-child(7) .emoji{background:#e0e9ff}
