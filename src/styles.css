@@ -23,3 +23,12 @@
 .gallery-empty p { max-width:410px; margin:7px auto 0; font-size:12px; line-height:1.5; color:#8a8190; }
 .gallery-footnote { font-size:10px; color:#a096a3; line-height:1.5; margin:17px 0 0; }
 @media(max-width:760px) { .gallery { padding:17px; } .gallery-heading { align-items:flex-start; flex-direction:column; } }
+
+/* v0.3: Living gallery controls and a portable animation download. */
+.gallery-header-actions { display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
+.gallery-motion { border:1px solid #e8d8f0; background:#f8f1fc; color:#79529f; border-radius:12px; padding:12px 14px; font-size:12px; font-weight:800; white-space:nowrap; }
+.gallery-motion[aria-pressed="false"] { background:#f5f3f7; color:#71677c; }
+.gallery-actions button { padding:9px 7px; }
+.export-animated { background:#e8dcf8; color:#6e3e9a; }
+.export-tip { margin:9px 2px 0; color:#968b9e; font-size:10px; line-height:1.5; text-align:center; }
+@media(max-width:760px) { .gallery-header-actions { width:100%; } }
