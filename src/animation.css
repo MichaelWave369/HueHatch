@@ -26,3 +26,66 @@
 .world.alive[data-speed="2"] .pulse {animation-duration:0.425s}
 .world.alive[data-speed="2"] .dance {animation-duration:0.4s}
 @media(prefers-reduced-motion:reduce){.world.alive *{animation:none!important}}
+
+
+/* v0.4 Reactive Coloring. Fills determine classes; these effects add to the living scene.
+   Always honor Freeze Frame and prefers-reduced-motion rules above. */
+.world.alive .reaction-heart {
+  animation:reactiveHeartbeat .9s ease-in-out infinite alternate;
+  transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 7px var(--paint-tone,#ff6f91));
+}
+.world.alive .reaction-beat {
+  animation:reactiveBeat .7s ease-in-out infinite alternate;
+  transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 7px var(--paint-tone,#ffd861));
+}
+.world.alive .reaction-bloom {
+  animation:reactiveBloom 1.8s ease-in-out infinite alternate;
+  transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 9px var(--paint-tone,#ff6f91));
+}
+.world.alive .reaction-bubble {
+  animation:reactiveBubble 2.4s ease-in-out infinite alternate;
+  transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 8px var(--paint-tone,#60cfdb));
+}
+.world.alive .reaction-star, .world.alive .reaction-disco, .world.alive .reaction-starfish {
+  animation:reactiveTwinkle 1.5s ease-in-out infinite alternate;
+  transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 7px var(--paint-tone,#ffd861));
+}
+.world.alive .reaction-petal, .world.alive .reaction-butterfly,
+.world.alive .reaction-sun, .world.alive .reaction-fish,
+.world.alive .reaction-jelly, .world.alive .reaction-moon,
+.world.alive .reaction-window, .world.alive .reaction-tree,
+.world.alive .reaction-antenna {
+  filter:drop-shadow(0 0 7px var(--paint-tone,#ffd861)) brightness(1.09);
+}
+@keyframes reactiveHeartbeat {from{transform:scale(1)}to{transform:scale(1.27)}}
+@keyframes reactiveBeat {from{transform:scale(.97)}to{transform:scale(1.18)}}
+@keyframes reactiveBloom {from{transform:scale(.97)}to{transform:scale(1.22)}}
+@keyframes reactiveBubble {from{transform:translateY(0) scale(1)}to{transform:translateY(-34px) scale(1.12)}}
+@keyframes reactiveTwinkle {from{opacity:.73;transform:scale(.93)}to{opacity:1;transform:scale(1.15)}}
+.world.alive[data-speed="0.5"] .reaction-heart{animation-duration:1.8s}
+.world.alive[data-speed="0.5"] .reaction-beat{animation-duration:1.4s}
+.world.alive[data-speed="0.5"] .reaction-bloom{animation-duration:3.6s}
+.world.alive[data-speed="0.5"] .reaction-bubble{animation-duration:4.8s}
+.world.alive[data-speed="0.5"] .reaction-star{animation-duration:3s}
+.world.alive[data-speed="0.5"] .reaction-disco{animation-duration:3s}
+.world.alive[data-speed="0.5"] .reaction-starfish{animation-duration:3s}
+.world.alive[data-speed="1.5"] .reaction-heart{animation-duration:0.6s}
+.world.alive[data-speed="1.5"] .reaction-beat{animation-duration:0.467s}
+.world.alive[data-speed="1.5"] .reaction-bloom{animation-duration:1.2s}
+.world.alive[data-speed="1.5"] .reaction-bubble{animation-duration:1.6s}
+.world.alive[data-speed="1.5"] .reaction-star{animation-duration:1s}
+.world.alive[data-speed="1.5"] .reaction-disco{animation-duration:1s}
+.world.alive[data-speed="1.5"] .reaction-starfish{animation-duration:1s}
+.world.alive[data-speed="2"] .reaction-heart{animation-duration:0.45s}
+.world.alive[data-speed="2"] .reaction-beat{animation-duration:0.35s}
+.world.alive[data-speed="2"] .reaction-bloom{animation-duration:0.9s}
+.world.alive[data-speed="2"] .reaction-bubble{animation-duration:1.2s}
+.world.alive[data-speed="2"] .reaction-star{animation-duration:0.75s}
+.world.alive[data-speed="2"] .reaction-disco{animation-duration:0.75s}
+.world.alive[data-speed="2"] .reaction-starfish{animation-duration:0.75s}
+
+@media (prefers-reduced-motion: reduce) {
+ .world.alive .reaction-heart, .world.alive .reaction-beat, .world.alive .reaction-bloom,
+ .world.alive .reaction-bubble, .world.alive .reaction-star, .world.alive .reaction-disco,
+ .world.alive .reaction-starfish { animation:none !important; }
+}
