@@ -1,0 +1,28 @@
+/* Shared live SVG motion for the canvas, gallery and self-contained SVG exports. */
+.world.alive .sun{animation:turn 12s linear infinite;transform-origin:700px 130px}.world.alive .cloud{animation:float 4s ease-in-out infinite alternate}.world.alive .flutter{animation:float 1s ease-in-out infinite alternate}.world.alive .sway{animation:sway 2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center bottom}.world.alive .swim{animation:swim 2s ease-in-out infinite alternate}.world.alive .bob,.world.alive .bubble{animation:float 2.4s ease-in-out infinite alternate}.world.alive .pulse{animation:pulse .85s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}.world.alive .dance{animation:dance .8s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center bottom}@keyframes turn{to{transform:rotate(360deg)}}@keyframes float{to{transform:translateY(-18px)}}@keyframes sway{to{transform:rotate(7deg)}}@keyframes swim{to{transform:translateX(30px)}}@keyframes pulse{to{transform:scale(1.1)}}@keyframes dance{to{transform:rotate(6deg) translateY(-9px)}}
+.world.alive.paused * { animation-play-state: paused !important; }
+.world.alive[data-speed="0.5"] .sun {animation-duration:24s}
+.world.alive[data-speed="0.5"] .cloud {animation-duration:8s}
+.world.alive[data-speed="0.5"] .flutter {animation-duration:2s}
+.world.alive[data-speed="0.5"] .sway {animation-duration:4s}
+.world.alive[data-speed="0.5"] .swim {animation-duration:4s}
+.world.alive[data-speed="0.5"] .bob, .world.alive[data-speed="0.5"] .bubble {animation-duration:4.8s}
+.world.alive[data-speed="0.5"] .pulse {animation-duration:1.7s}
+.world.alive[data-speed="0.5"] .dance {animation-duration:1.6s}
+.world.alive[data-speed="1.5"] .sun {animation-duration:8s}
+.world.alive[data-speed="1.5"] .cloud {animation-duration:2.667s}
+.world.alive[data-speed="1.5"] .flutter {animation-duration:0.667s}
+.world.alive[data-speed="1.5"] .sway {animation-duration:1.333s}
+.world.alive[data-speed="1.5"] .swim {animation-duration:1.333s}
+.world.alive[data-speed="1.5"] .bob, .world.alive[data-speed="1.5"] .bubble {animation-duration:1.6s}
+.world.alive[data-speed="1.5"] .pulse {animation-duration:0.567s}
+.world.alive[data-speed="1.5"] .dance {animation-duration:0.533s}
+.world.alive[data-speed="2"] .sun {animation-duration:6s}
+.world.alive[data-speed="2"] .cloud {animation-duration:2s}
+.world.alive[data-speed="2"] .flutter {animation-duration:0.5s}
+.world.alive[data-speed="2"] .sway {animation-duration:1s}
+.world.alive[data-speed="2"] .swim {animation-duration:1s}
+.world.alive[data-speed="2"] .bob, .world.alive[data-speed="2"] .bubble {animation-duration:1.2s}
+.world.alive[data-speed="2"] .pulse {animation-duration:0.425s}
+.world.alive[data-speed="2"] .dance {animation-duration:0.4s}
+@media(prefers-reduced-motion:reduce){.world.alive *{animation:none!important}}
